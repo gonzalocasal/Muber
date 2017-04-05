@@ -25,6 +25,14 @@ public class Viaje {
 		this.finshed=false;
 	}
 	
+	public Double average(){
+		Double result= 0.0;
+		for (Calificacion qualification : qualifications) {
+			result = result + qualification.getScore(); 
+		}
+		return result/qualifications.size();
+	}
+	
 	public void qualify (Calificacion calification){
 		this.qualifications.add(calification);
 	}
