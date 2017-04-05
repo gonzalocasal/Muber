@@ -12,7 +12,7 @@ public class Conductor extends Usuario{
 	public Boolean isLicenseExipered(){
 		Date today = new Date();
 		int result = this.licenseExpiration.compareTo(today);
-	return result > 0;
+	return result > 1;
 	}
 	
 	public Date getLicenseExpiration() {
