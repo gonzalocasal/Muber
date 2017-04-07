@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 public class Conductor extends Usuario{
 	
 	private Date licenseExpiration;
-
 	
 	public Double average(){
 		List<Viaje> endedTravels = this.travels.stream().filter(travel -> travel.getFinshed()).collect(Collectors.toList());

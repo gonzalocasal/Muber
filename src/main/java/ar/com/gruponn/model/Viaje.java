@@ -5,9 +5,10 @@ import java.util.List;
 
 public class Viaje {
 	
-	
+	private int id;
 	private List<Pasajero> passengers;
 	private List<Calificacion> qualifications;
+	private Conductor driver;
 	private String origin;
 	private String destiny;
 	private Integer value;
@@ -79,6 +80,18 @@ public class Viaje {
 	}
 	public void setQualifications(List<Calificacion> qualifications) {
 		this.qualifications = qualifications;
+	}
+	public Conductor getDriver() {
+		return driver;
+	}
+	public void setDriver(Conductor driver) {
+		this.driver = driver;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	
