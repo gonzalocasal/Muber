@@ -1,5 +1,6 @@
 package ar.com.gruponn.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +11,12 @@ public abstract class Usuario {
 	protected String contraseña;
 	protected String nombre;
 	protected String apellido;
+	protected Date fechaAlta;
+	
+	public Usuario (){
+		this.fechaAlta = new Date();
+		this.viajes = new ArrayList<Viaje>();
+	}
 	
 	public List<Viaje> getViajes() {
 		return viajes;
@@ -47,7 +54,7 @@ public abstract class Usuario {
 	public void setFechaAlta(Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
-	protected Date fechaAlta;
+	
 	 
 
 }

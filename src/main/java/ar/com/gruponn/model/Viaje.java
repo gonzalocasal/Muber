@@ -14,7 +14,6 @@ public class Viaje {
 	private Integer costo;
 	private Integer capacidad;
 	private Boolean abierto;
-
 	
 	public Viaje(){
 		this.pasajeros = new ArrayList<Pasajero>();
@@ -26,16 +25,17 @@ public class Viaje {
 		this.abierto=true;
 	}
 	
-	public Double average(){
-		Double result= 0.0;
-		for (Calificacion calificacion : calificaciones) {
-			result = result + calificacion.getPuntaje(); 
-		}
-		return result/calificaciones.size();
+	public void registrarPasajero(Pasajero pasajero){
+		this.pasajeros.add(pasajero);
 	}
 	
-	public void calificar (Calificacion calification){
-		this.calificaciones.add(calification);
+	public Double promedioPuntajes(){
+		Double sumaPuntajes = calificaciones.stream().mapToDouble(c -> c.getPuntaje()).sum();
+		return  sumaPuntajes/calificaciones.size();
+	}
+	
+	public void calificar (Calificacion calificacion){
+		this.calificaciones.add(calificacion);
 	}
 
 	public int getId() {

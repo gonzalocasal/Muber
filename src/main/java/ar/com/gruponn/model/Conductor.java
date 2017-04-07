@@ -8,13 +8,10 @@ public class Conductor extends Usuario{
 	
 	private Date fechaExipracionLicencia;
 	
-	public Double promedioCalificiaciones(){
-		List<Viaje> pasajeros = this.viajes.stream().filter(viaje -> viaje.getAbierto()).collect(Collectors.toList());
-		Double resultado= 0.0;
-		for (Viaje viaje : pasajeros) {
-			resultado = resultado + viaje.average(); 
-		}
-		return resultado/pasajeros.size();
+	public Double promedioPuntajes(){
+		List<Viaje> viajesCerrados = this.viajes.stream().filter(viaje -> !viaje.getAbierto()).collect(Collectors.toList());
+		Double sumaCalificaciones = viajesCerrados.stream().mapToDouble(v -> v.promedioPuntajes()).sum(); 
+		return sumaCalificaciones/viajesCerrados.size();
 	}
 	
 	
@@ -24,6 +21,10 @@ public class Conductor extends Usuario{
 		return result > 0;
 	}
 
+	public void registrarViaje(Viaje viaje){
+		this.viajes.add(viaje);
+	}
+	
 	public Date getFechaExipracionLicencia() {
 		return fechaExipracionLicencia;
 	}
