@@ -5,10 +5,8 @@ import java.util.List;
 
 public abstract class Usuario {
 	
-	protected List<Viaje> travels;
-	protected String username;
-	protected String password;
-	protected Date registredDate;
+	protected List<Viaje> viajes;
+	protected Date fechaAlta;
 	 
 
 }

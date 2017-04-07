@@ -2,26 +2,28 @@ package ar.com.gruponn.model;
 
 public class Calificacion {
 	
-	private Pasajero passanger;
-	private Integer score;
-	private String comment;
+	private Pasajero pasajero;
+	private Integer puntaje;
+	private String comentario;
 	
-	public Pasajero getPassanger() {
-		return passanger;
+	public Pasajero getPasajero() {
+		return pasajero;
 	}
-	public void setPassanger(Pasajero passanger) {
-		this.passanger = passanger;
+	public void setPasajero(Pasajero pasajero) {
+		this.pasajero = pasajero;
 	}
-	public Integer getScore() {
-		return score;
+	public Integer getPuntaje() {
+		return puntaje;
 	}
-	public void setScore(Integer score) {
-		this.score = score;
+	public void setPuntaje(Integer puntaje) {
+		this.puntaje = puntaje;
 	}
-	public String getComment() {
-		return comment;
+	public String getComentario() {
+		return comentario;
 	}
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
 	}
+	
+	
 }

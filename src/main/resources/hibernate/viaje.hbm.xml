@@ -8,23 +8,23 @@
 			<generator class="native"/>
 		</id>
 		
-	 	<property name="origin" column="ORIGEN" type="string"/>
-   		<property name="destiny" column="DESTINO" type="string"/>
-	 	<property name="value" column="COSTO" type="int"/>
-	 	<property name="maxPassengers" column="MAX_PASAJEROS" type="int"/>
-	 	<property name="finshed" column="ABIERTO" type="boolean"/>
+	 	<property name="origen" column="ORIGEN" type="string"/>
+   		<property name="destino" column="DESTINO" type="string"/>
+	 	<property name="costo" column="COSTO" type="int"/>
+	 	<property name="capacidad" column="MAX_PASAJEROS" type="int"/>
+	 	<property name="abierto" column="ABIERTO" type="boolean"/>
 	 	
 	 	<!--
-	 	<many-to-one name="driver" class="ar.com.gruponn.model.Conductor" fetch="select">
+	 	<many-to-one name="conductor" class="ar.com.gruponn.model.Conductor" fetch="select">
             <column name="ID_DRIVER" />
         </many-to-one>
 	
-		<set name="passengers" access="field" lazy="false" fetch="join"  table="VIAJE_PASAJEROS">
+		<set name="pasajeros" access="field" lazy="false" fetch="join"  table="VIAJE_PASAJEROS">
 	    	<key column="ID_VIAJE" />
 	    	<many-to-many column="ID_PASAJERO" class="ar.com.gruponn.model.Pasajero" />
 		</set>	 		
 	
-	 	<set name="qualifications" access="field" lazy="false" fetch="join"  table="VIAJE_PASAJEROS">
+	 	<set name="calificaciones" access="field" lazy="false" fetch="join" >
 	    	<key column="ID_VIAJE" />
 	    	<one-to-many  class="ar.com.gruponn.model.Calificacion" />
 		</set>

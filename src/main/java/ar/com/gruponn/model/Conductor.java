@@ -6,31 +6,29 @@ import java.util.stream.Collectors;
 
 public class Conductor extends Usuario{
 	
-	private Date licenseExpiration;
+	private Date fechaExipracionLicencia;
 	
-	public Double average(){
-		List<Viaje> endedTravels = this.travels.stream().filter(travel -> travel.getFinshed()).collect(Collectors.toList());
-		Double result= 0.0;
-		for (Viaje viaje : endedTravels) {
-			result = result + viaje.average(); 
+	public Double promedioCalificiaciones(){
+		List<Viaje> pasajeros = this.viajes.stream().filter(viaje -> viaje.getAbierto()).collect(Collectors.toList());
+		Double resultado= 0.0;
+		for (Viaje viaje : pasajeros) {
+			resultado = resultado + viaje.average(); 
 		}
-		return result/endedTravels.size();
+		return resultado/pasajeros.size();
 	}
 	
 	
-	public Boolean isLicenseExipered(){
+	public Boolean isVencida(){
 		Date today = new Date();
-		int result = this.licenseExpiration.compareTo(today);
-	return result > 0;
-	}
-	
-	public Date getLicenseExpiration() {
-		return licenseExpiration;
+		int result = this.fechaExipracionLicencia.compareTo(today);
+		return result > 0;
 	}
 
-	public void setLicenseExpiration(Date licenseExpiration) {
-		this.licenseExpiration = licenseExpiration;
+	public Date getFechaExipracionLicencia() {
+		return fechaExipracionLicencia;
 	}
-
+	public void setFechaExipracionLicencia(Date fechaExipracionLicencia) {
+		this.fechaExipracionLicencia = fechaExipracionLicencia;
+	}
 	
 }
