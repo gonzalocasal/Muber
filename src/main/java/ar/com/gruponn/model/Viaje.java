@@ -30,8 +30,7 @@ public class Viaje {
 	}
 	
 	public Double promedioPuntajes(){
-		Double sumaPuntajes = calificaciones.stream().mapToDouble(c -> c.getPuntaje()).sum();
-		return  sumaPuntajes/calificaciones.size();
+		return (calificaciones.stream().mapToDouble(c -> c.getPuntaje()).average()).getAsDouble();
 	}
 	
 	public void calificar (Calificacion calificacion){

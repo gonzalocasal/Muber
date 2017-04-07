@@ -10,14 +10,11 @@ public class Conductor extends Usuario{
 	
 	public Double promedioPuntajes(){
 		List<Viaje> viajesCerrados = this.viajes.stream().filter(viaje -> !viaje.getAbierto()).collect(Collectors.toList());
-		Double sumaCalificaciones = viajesCerrados.stream().mapToDouble(v -> v.promedioPuntajes()).sum(); 
-		return sumaCalificaciones/viajesCerrados.size();
+		return (viajesCerrados.stream().mapToDouble(v -> v.promedioPuntajes()).average()).getAsDouble();
 	}
 	
-	
 	public Boolean isVencida(){
-		Date today = new Date();
-		int result = this.fechaExipracionLicencia.compareTo(today);
+		int result = this.fechaExipracionLicencia.compareTo(new Date());
 		return result > 0;
 	}
 
