@@ -13,6 +13,7 @@ public class Conductor extends Usuario{
 		return (viajesCerrados.stream().mapToDouble(v -> v.promedioPuntajes()).average()).getAsDouble();
 	}
 	
+	
 	public Boolean isVencida(){
 		int result = this.fechaExipracionLicencia.compareTo(new Date());
 		return result > 0;

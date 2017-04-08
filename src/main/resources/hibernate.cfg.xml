@@ -11,7 +11,7 @@
 			com.mysql.jdbc.Driver
 		</property>
 
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/grupoNN</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/grupo27</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">root</property>
 		<property name="hibernate.current_session_context_class">thread</property>
