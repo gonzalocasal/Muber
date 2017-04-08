@@ -5,9 +5,9 @@ import java.util.Date;
 import org.junit.Assert;
 import org.junit.Test;
 
-import ar.com.gruponn.model.Calificacion;
-import ar.com.gruponn.model.Conductor;
-import ar.com.gruponn.model.Viaje;
+import ar.com.grupo27.model.Calificacion;
+import ar.com.grupo27.model.Conductor;
+import ar.com.grupo27.model.Viaje;
 
 public class ConductorTest {
 

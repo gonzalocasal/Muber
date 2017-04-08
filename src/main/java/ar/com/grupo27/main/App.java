@@ -1,10 +1,10 @@
-package ar.com.gruponn.main;
+package ar.com.grupo27.main;
 
 import org.hibernate.Session;
 
-import ar.com.gruponn.model.Viaje;
-import ar.com.gruponn.persistence.HibernateUtil;
-import ar.com.gruponn.persistence.ViajeDAO;
+import ar.com.grupo27.model.Viaje;
+import ar.com.grupo27.persistence.HibernateUtil;
+import ar.com.grupo27.persistence.ViajeDAO;
 
 public class App {
     

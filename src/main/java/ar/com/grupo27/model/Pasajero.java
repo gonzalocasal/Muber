@@ -1,4 +1,4 @@
-package ar.com.gruponn.model;
+package ar.com.grupo27.model;
 
 public class Pasajero extends Usuario{
 

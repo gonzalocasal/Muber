@@ -1,4 +1,4 @@
-package ar.com.gruponn.model;
+package ar.com.grupo27.model;
 
 import java.util.Date;
 import java.util.List;

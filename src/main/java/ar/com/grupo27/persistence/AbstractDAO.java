@@ -1,4 +1,4 @@
-package ar.com.gruponn.persistence;
+package ar.com.grupo27.persistence;
 
 import org.hibernate.SessionFactory;
 
