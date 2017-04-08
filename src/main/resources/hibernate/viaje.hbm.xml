@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-	<class name="ar.com.gruponn.model.Viaje" table="VIAJE">
+	<class name="ar.com.grupo27.model.Viaje" table="VIAJE">
 		
 		<id name="id" type="int" column="ID_VIAJE" >
 			<generator class="native"/>
@@ -15,18 +15,18 @@
 	 	<property name="abierto" column="ABIERTO" type="boolean"/>
 	 	
 	 	<!--
-	 	<many-to-one name="conductor" class="ar.com.gruponn.model.Conductor" fetch="select">
-            <column name="ID_DRIVER" />
+	 	<many-to-one name="conductor" class="ar.com.grupo27.model.Conductor" fetch="select">
+            <column name="ID_CONDUCTOR" />
         </many-to-one>
 	
 		<set name="pasajeros" access="field" lazy="false" fetch="join"  table="VIAJE_PASAJEROS">
 	    	<key column="ID_VIAJE" />
-	    	<many-to-many column="ID_PASAJERO" class="ar.com.gruponn.model.Pasajero" />
+	    	<many-to-many column="ID_PASAJERO" class="ar.com.grupo27.model.Pasajero" />
 		</set>	 		
 	
 	 	<set name="calificaciones" access="field" lazy="false" fetch="join" >
 	    	<key column="ID_VIAJE" />
-	    	<one-to-many  class="ar.com.gruponn.model.Calificacion" />
+	    	<one-to-many  class="ar.com.grupo27.model.Calificacion" />
 		</set>
 		--> 	
 	
