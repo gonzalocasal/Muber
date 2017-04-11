@@ -11,7 +11,7 @@ public class Viaje {
 	private Conductor conductor;
 	private String origen;
 	private String destino;
-	private Integer costo;
+	private Double costo;
 	private Integer capacidad;
 	private Boolean abierto;
 	
@@ -20,17 +20,25 @@ public class Viaje {
 		this.calificaciones= new ArrayList<Calificacion>();
 		this.origen="";
 		this.destino="";
-		this.costo=0;
+		this.costo=0.00;
 		this.capacidad=0;
 		this.abierto=true;
 	}
 	
 	public void registrarPasajero(Pasajero pasajero){
-		this.pasajeros.add(pasajero);
+		if (capacidad >= pasajeros.size() +1 && abierto ){
+			this.pasajeros.add(pasajero);
+		}
 	}
 	
 	public Double promedioPuntajes(){
 		return (calificaciones.stream().mapToDouble(c -> c.getPuntaje()).average()).getAsDouble();
+	}
+	
+	public void setAbierto(Boolean abierto) {
+		if (!abierto){
+			this.abierto = abierto;
+		}
 	}
 	
 	public void calificar (Calificacion calificacion){
@@ -85,11 +93,11 @@ public class Viaje {
 		this.destino = destino;
 	}
 
-	public Integer getCosto() {
+	public Double getCosto() {
 		return costo;
 	}
 
-	public void setCosto(Integer costo) {
+	public void setCosto(Double costo) {
 		this.costo = costo;
 	}
 
@@ -105,9 +113,7 @@ public class Viaje {
 		return abierto;
 	}
 
-	public void setAbierto(Boolean abierto) {
-		this.abierto = abierto;
-	}
+	
 	
 	
 	

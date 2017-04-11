@@ -1,6 +1,7 @@
 package ar.com.grupo27.service;
 
 import ar.com.grupo27.model.Pasajero;
+import ar.com.grupo27.model.Viaje;
 import ar.com.grupo27.persistence.PasajeroDAO;
 
 public class PasajeroService {
@@ -8,7 +9,7 @@ public class PasajeroService {
 	private PasajeroDAO dao;
 	
 	public PasajeroService(){
-		this.setDao(new PasajeroDAO());
+		this.dao= new PasajeroDAO();
 	}
 	
 	public void registrarPasajero(Pasajero pasajero){
@@ -17,17 +18,24 @@ public class PasajeroService {
 		dao.closeCurrentSessionwithTransaction();
 	}
 	
+	public void actualizarPasajero(Pasajero pasajero){
+		dao.openCurrentSessionwithTransaction();
+		dao.actualizarPasajero(pasajero);
+		dao.closeCurrentSessionwithTransaction();
+	}
+	
 	public Pasajero obtenerPasajero(int id){
 		dao.openCurrentSessionwithTransaction();
-		Pasajero pasajero = dao.findOne(id);
+		Pasajero pasajero = dao.obtenerPasajero(id);
 		dao.closeCurrentSessionwithTransaction();
 		return pasajero;
 	}
-	public PasajeroDAO getDao() {
-		return dao;
-	}
-	public void setDao(PasajeroDAO dao) {
-		this.dao = dao;
+	
+	public void cobrarViaje (Viaje viaje){
+		for (Pasajero pasajero: viaje.getPasajeros()){
+			pasajero.cobrar(viaje);
+			actualizarPasajero(pasajero);
+		}
 	}
 	
 }

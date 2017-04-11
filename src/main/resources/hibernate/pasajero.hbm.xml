@@ -7,12 +7,13 @@
 			<generator class="native"/>
 		</id>
 	 	<property name="usuario" column="USUARIO" type="string"/>
+	 	<property name="pass" column="PASS" type="string"/>
 	 	<property name="nombre" column="NOMBRE" type="string"/>
 	 	<property name="apellido" column="APELLIDO" type="string"/>
 	 	<property name="fechaAlta" column="FECHA_ALTA" type="date"/>
 		<property name="saldo" column="SALDO" type="double"/>
 
-		<bag name="viajes"  inverse="true" fetch="select"  table="VIAJE_PASAJERO" >
+		<bag name="viajes"  inverse="true" lazy="false" fetch="select"  table="VIAJE_PASAJERO" >
           <key column="ID_PASAJERO" />
           <many-to-many column="ID_VIAJE" class="ar.com.grupo27.model.Viaje"/>
       	</bag>

@@ -8,8 +8,12 @@ public class PasajeroDAO extends AbstractDAO {
 		currentSession.save(pasajero);
 	}
 	
-	public Pasajero findOne(int id){
+	public Pasajero obtenerPasajero(int id){
 		return (Pasajero) currentSession.get(Pasajero.class, id);
+	}
+
+	public void actualizarPasajero(Pasajero pasajero) {
+		currentSession.update(pasajero);
 	}
 	
 }

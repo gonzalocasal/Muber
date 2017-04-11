@@ -7,12 +7,13 @@
 			<generator class="native"/>
 		</id>
 	 	<property name="usuario" column="USUARIO" type="string"/>
+	 	<property name="pass" column="PASS" type="string"/>
 	 	<property name="nombre" column="NOMBRE" type="string"/>
 	 	<property name="apellido" column="APELLIDO" type="string"/>
 	 	<property name="fechaAlta" column="FECHA_ALTA" type="date"/>
 	 	<property name="fechaExipracionLicencia" column="FECHA_EXPIRACION_LICENCIA" type="date"/>
 		
-		<bag name="viajes" fetch="select">
+		<bag name="viajes" lazy="false" fetch="select">
           <key column="ID_CONDUCTOR" />
           <one-to-many class="ar.com.grupo27.model.Viaje"/>
       	</bag>

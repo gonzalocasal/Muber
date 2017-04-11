@@ -8,7 +8,7 @@ public class ConductorService {
 	private ConductorDAO dao;
 
 	public ConductorService(){
-		this.setDao(new ConductorDAO());
+		this.dao=new ConductorDAO();
 	}
 
 	public void registrarConductor(Conductor conductor){
@@ -17,6 +17,13 @@ public class ConductorService {
 		dao.closeCurrentSessionwithTransaction();
 	}
 	
+	public void actualizarConductor(Conductor conductor){
+		dao.openCurrentSessionwithTransaction();
+		dao.actualizarConductor(conductor);
+		dao.closeCurrentSessionwithTransaction();
+	}
+	
+	
 	public Conductor obternerConductor (int id){
 		dao.openCurrentSessionwithTransaction();
 		Conductor conductor = dao.findOne(id);
@@ -24,12 +31,7 @@ public class ConductorService {
 		return conductor;
 	}
 	
-	public ConductorDAO getDao() {
-		return dao;
-	}
-	public void setDao(ConductorDAO dao) {
-		this.dao = dao;
-	}
+	
 }
 
 

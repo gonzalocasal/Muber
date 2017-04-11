@@ -1,7 +1,5 @@
 package ar.com.grupo27.tests;
 
-import java.util.Date;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -18,9 +16,9 @@ public class ConductorTest {
 		Conductor conductor = new Conductor();
 		conductor.setNombre("Juan");
 		conductor.setApellido("Lopez");
-		conductor.setContraseña("123456");
+		conductor.setPass("123456");
 		conductor.setUsuario("jlopez@gmail.com");
-		conductor.setFechaExipracionLicencia(new Date());
+		conductor.setExpiracionLicencia("23-09-2029");
 		
 		Calificacion calificacion1 = new Calificacion();
 		Calificacion calificacion2 = new Calificacion();

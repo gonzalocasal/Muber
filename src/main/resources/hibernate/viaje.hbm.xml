@@ -7,7 +7,7 @@
 		</id>
 	 	<property name="origen" column="ORIGEN" type="string"/>
    		<property name="destino" column="DESTINO" type="string"/>
-	 	<property name="costo" column="COSTO" type="int"/>
+	 	<property name="costo" column="COSTO" type="double"/>
 	 	<property name="capacidad" column="MAX_PASAJEROS" type="int"/>
 	 	<property name="abierto" column="ABIERTO" type="boolean"/>
 	 	
@@ -15,7 +15,7 @@
             <column name="ID_CONDUCTOR" not-null="false" />
         </many-to-one>
 		
-		<bag name="pasajeros" inverse="false" fetch="select" table="VIAJE_PASAJERO">
+		<bag name="pasajeros" inverse="false" lazy="false" fetch="select" table="VIAJE_PASAJERO">
           <key column="ID_VIAJE" />
           <many-to-many column="ID_PASAJERO"  class="ar.com.grupo27.model.Pasajero"/>
       	</bag>

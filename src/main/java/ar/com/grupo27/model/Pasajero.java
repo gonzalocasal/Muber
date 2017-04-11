@@ -12,8 +12,8 @@ public class Pasajero extends Usuario{
 		viaje.calificar(calificacion);
 	}
 
-	public void cobrar (Double monto){
-		this.saldo -= monto;
+	public void cobrar (Viaje viaje){
+		this.saldo -= viaje.getCosto()/viaje.getPasajeros().size();
 	}
 	public Double getSaldo() {
 		return saldo;

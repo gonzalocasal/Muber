@@ -8,8 +8,12 @@ public class ViajeDAO extends AbstractDAO {
 		currentSession.save(viaje);
 	}
 	
-	public Viaje findOne(int id){
+	public Viaje obtenerViaje(int id){
 		return (Viaje) currentSession.get(Viaje.class, id);
+	}
+
+	public void actualizarViaje(Viaje viaje) {
+		currentSession.update(viaje);
 	}
 	
 }

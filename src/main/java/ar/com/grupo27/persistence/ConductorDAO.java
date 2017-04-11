@@ -11,5 +11,10 @@ public class ConductorDAO extends AbstractDAO {
 	public Conductor findOne(int id){
 		return (Conductor) currentSession.get(Conductor.class, id);
 	}
+
+	public void actualizarConductor(Conductor conductor) {
+		currentSession.update(conductor);
+		
+	}
 	
 }
