@@ -63,6 +63,13 @@ public class App {
         
         viajeService.finalizarViaje(viaje);
 
+        /**
+        conductorService.obtenerTodosLosCondutores();
+        pasajeroService.obtenerTodosLosPasajeros();
+        viajeService.obtenerTodosLosViajesAbiertos();
+        viajeService.registrarViaje(new Viaje());
+        viajeService.obtenerTodosLosViajesAbiertos();
+        **/
     }
 
 }

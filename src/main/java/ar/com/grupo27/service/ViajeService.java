@@ -1,5 +1,7 @@
 package ar.com.grupo27.service;
 
+import java.util.List;
+
 import ar.com.grupo27.model.Pasajero;
 import ar.com.grupo27.model.Viaje;
 import ar.com.grupo27.persistence.ViajeDAO;
@@ -24,6 +26,13 @@ public class ViajeService {
 		dao.openCurrentSessionwithTransaction();
 		dao.actualizarViaje(viaje);
 		dao.closeCurrentSessionwithTransaction();
+	}
+	
+	public List<Viaje> obtenerTodosLosViajesAbiertos(){
+		dao.openCurrentSessionwithTransaction();
+		List<Viaje> todosLosViajesAbiertos = dao.obtenerTodosLosViajesAbiertos();
+		dao.closeCurrentSessionwithTransaction();
+		return todosLosViajesAbiertos;
 	}
 	
 	public Viaje obtenerViaje (int id){

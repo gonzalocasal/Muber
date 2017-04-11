@@ -1,5 +1,7 @@
 package ar.com.grupo27.persistence;
 
+import java.util.List;
+
 import ar.com.grupo27.model.Pasajero;
 
 public class PasajeroDAO extends AbstractDAO {
@@ -14,6 +16,11 @@ public class PasajeroDAO extends AbstractDAO {
 
 	public void actualizarPasajero(Pasajero pasajero) {
 		currentSession.update(pasajero);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Pasajero> obtenerTodosLosPasajeros() {
+		return currentSession.createCriteria(Pasajero.class).list();
 	}
 	
 }
