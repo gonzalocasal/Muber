@@ -4,6 +4,10 @@ public class Pasajero extends Usuario{
 
 	private Double saldo;
 
+	public Pasajero(){
+		this.saldo=0.0;
+	}
+	
 	public void calificar(String comment, Integer score, Viaje viaje ){
 		Calificacion calificacion = new Calificacion();
 		calificacion.setComentario(comment);

@@ -16,8 +16,8 @@ public class App {
 		ViajeService viajeService = new ViajeService();
 
 		Viaje viaje = new Viaje();
-        viaje.setOrigen("Tres Arroyos");
-        viaje.setDestino("La Plata");
+        viaje.setOrigen("La Plata");
+        viaje.setDestino("Tres Arroyos");
         viaje.setCosto(900.00);
         viaje.setCapacidad(3);
 		
@@ -63,13 +63,6 @@ public class App {
         
         viajeService.finalizarViaje(viaje);
 
-        /**
-        conductorService.obtenerTodosLosCondutores();
-        pasajeroService.obtenerTodosLosPasajeros();
-        viajeService.obtenerTodosLosViajesAbiertos();
-        viajeService.registrarViaje(new Viaje());
-        viajeService.obtenerTodosLosViajesAbiertos();
-        **/
     }
 
 }
