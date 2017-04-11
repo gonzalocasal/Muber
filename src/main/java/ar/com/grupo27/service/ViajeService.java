@@ -43,9 +43,8 @@ public class ViajeService {
 	}
 	
 	public void registrarPasajero(Viaje viajeParam, Pasajero pasajero) {
-		Viaje viaje = obtenerViaje(viajeParam.getId());
-		viaje.registrarPasajero(pasajero);
-		actualizarViaje(viaje);
+		viajeParam.registrarPasajero(pasajero);
+		actualizarViaje(viajeParam);
 	}
 
 	public void finalizarViaje(Viaje viajerParam) {
