@@ -62,7 +62,6 @@ public class App {
         viajeService.registrarPasajero(viaje,pasajero3);
         
         viajeService.finalizarViaje(viaje);
-        
 
     }
 

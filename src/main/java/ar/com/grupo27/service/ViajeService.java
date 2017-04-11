@@ -41,9 +41,10 @@ public class ViajeService {
 
 	public void finalizarViaje(Viaje viajerParam) {
 		Viaje viaje = obtenerViaje(viajerParam.getId());
-		viaje.setAbierto(false);
-		actualizarViaje(viaje);
-		pasajeroService.cobrarViaje(viaje);
+		if(viaje.finalizarViaje()){
+			pasajeroService.cobrarViaje(viaje);
+			actualizarViaje(viaje);
+		}
 	}
 	
 	

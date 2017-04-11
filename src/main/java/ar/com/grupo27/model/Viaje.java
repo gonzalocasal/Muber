@@ -35,6 +35,14 @@ public class Viaje {
 		return (calificaciones.stream().mapToDouble(c -> c.getPuntaje()).average()).getAsDouble();
 	}
 	
+	public boolean finalizarViaje(){
+		if(abierto){
+			setAbierto(false);
+			return true;
+		}
+		return false;
+	}
+	
 	public void setAbierto(Boolean abierto) {
 		if (!abierto){
 			this.abierto = abierto;
