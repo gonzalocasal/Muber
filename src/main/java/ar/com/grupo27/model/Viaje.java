@@ -37,7 +37,7 @@ public class Viaje {
 	
 	public boolean finalizarViaje(){
 		if(abierto){
-			setAbierto(false);
+			this.abierto=false;
 			return true;
 		}
 		return false;

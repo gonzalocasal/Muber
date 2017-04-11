@@ -2,6 +2,7 @@ package ar.com.grupo27.service;
 
 import java.util.List;
 
+import ar.com.grupo27.model.Calificacion;
 import ar.com.grupo27.model.Pasajero;
 import ar.com.grupo27.model.Viaje;
 import ar.com.grupo27.persistence.ViajeDAO;
@@ -54,6 +55,11 @@ public class ViajeService {
 			actualizarViaje(viaje);
 		}
 	}
-	
+
+	public void calificar(Calificacion calificacion) {
+		dao.openCurrentSessionwithTransaction();
+		dao.registrarCalificacion(calificacion);
+		dao.closeCurrentSessionwithTransaction();
+	}
 	
 }

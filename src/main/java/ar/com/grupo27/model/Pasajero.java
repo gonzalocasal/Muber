@@ -8,14 +8,6 @@ public class Pasajero extends Usuario{
 		this.saldo=0.0;
 	}
 	
-	public void calificar(String comment, Integer score, Viaje viaje ){
-		Calificacion calificacion = new Calificacion();
-		calificacion.setComentario(comment);
-		calificacion.setPuntaje(score);
-		calificacion.setPasajero(this);
-		viaje.calificar(calificacion);
-	}
-
 	public void cobrar (Viaje viaje){
 		this.saldo -= viaje.getCosto()/viaje.getPasajeros().size();
 	}

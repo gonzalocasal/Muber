@@ -1,5 +1,6 @@
 package ar.com.grupo27.main;
 
+import ar.com.grupo27.model.Calificacion;
 import ar.com.grupo27.model.Conductor;
 import ar.com.grupo27.model.Pasajero;
 import ar.com.grupo27.model.Viaje;
@@ -63,6 +64,31 @@ public class App {
         
         viajeService.finalizarViaje(viaje);
 
+        Calificacion calificacion1= new Calificacion();
+        calificacion1.setPuntaje(5);
+        calificacion1.setComentario("muy bueno");
+        calificacion1.setViaje(viaje);
+        calificacion1.setPasajero(pasajero1);
+        
+        Calificacion calificacion2= new Calificacion();
+        calificacion2.setPuntaje(4);
+        calificacion2.setComentario("bueno");
+        calificacion2.setViaje(viaje);
+        calificacion2.setPasajero(pasajero2);
+        
+        Calificacion calificacion3= new Calificacion();
+        calificacion3.setPuntaje(4);
+        calificacion3.setComentario("bueno");
+        calificacion3.setViaje(viaje);
+        calificacion3.setPasajero(pasajero3);
+        
+        viajeService.calificar(calificacion1);
+        viajeService.calificar(calificacion2);
+        viajeService.calificar(calificacion3);
+        
+        Conductor resultado = conductorService.obternerConductor(1);
+		System.out.print("El promedio del conductor "+ resultado.getNombre()+" "+resultado.getApellido() +" es: " + resultado.promedioPuntajes().doubleValue());
+        
     }
 
 }

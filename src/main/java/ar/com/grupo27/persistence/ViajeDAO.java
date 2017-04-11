@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.criterion.Restrictions;
 
+import ar.com.grupo27.model.Calificacion;
 import ar.com.grupo27.model.Viaje;
 
 public class ViajeDAO extends AbstractDAO {
@@ -23,6 +24,11 @@ public class ViajeDAO extends AbstractDAO {
 	@SuppressWarnings("unchecked")
 	public List<Viaje> obtenerTodosLosViajesAbiertos() {
 		return currentSession.createCriteria(Viaje.class).add(Restrictions.eq("abierto", true)).list(); 
+	}
+
+	public void registrarCalificacion(Calificacion calificacion) {
+		currentSession.save(calificacion);
+		
 	}
 	
 }

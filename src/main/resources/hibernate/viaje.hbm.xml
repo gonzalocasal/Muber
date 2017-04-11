@@ -20,12 +20,10 @@
           <many-to-many column="ID_PASAJERO"  class="ar.com.grupo27.model.Pasajero"/>
       	</bag>
       	
+      	<bag name="calificaciones" inverse="false" lazy="false" fetch="select" >
+          <key column="ID_VIAJE" />
+          <one-to-many class="ar.com.grupo27.model.Calificacion"/>
+      	</bag>
       	
-		<!--
-	 	<set name="calificaciones" access="field" lazy="false" fetch="join" >
-	    	<key column="ID_VIAJE" />
-	    	<one-to-many  class="ar.com.grupo27.model.Calificacion" />
-		</set>
-	 	-->
 	</class>
 </hibernate-mapping>
