@@ -10,7 +10,7 @@ public class ConductorDAO extends AbstractDAO {
 		currentSession.save(conductor);
 	}
 
-	public Conductor findOne(int id){
+	public Conductor obtenerConductor(int id){
 		return (Conductor) currentSession.get(Conductor.class, id);
 	}
 

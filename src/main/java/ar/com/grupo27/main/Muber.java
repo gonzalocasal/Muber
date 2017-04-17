@@ -10,12 +10,13 @@ import ar.com.grupo27.service.ViajeService;
 
 public class Muber {
     
+	
+	static ConductorService conductorService = new ConductorService();
+	static PasajeroService pasajeroService = new PasajeroService();
+	static ViajeService viajeService = new ViajeService();
+	
 	public static void main( String[] args ){
         
-		ConductorService conductorService = new ConductorService();
-		PasajeroService pasajeroService = new PasajeroService();
-		ViajeService viajeService = new ViajeService();
-
 		Viaje viaje = new Viaje();
         viaje.setOrigen("La Plata");
         viaje.setDestino("Tres Arroyos");

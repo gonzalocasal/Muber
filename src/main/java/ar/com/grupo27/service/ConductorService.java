@@ -28,7 +28,7 @@ public class ConductorService {
 	
 	public Conductor obternerConductor (int id){
 		dao.openCurrentSessionwithTransaction();
-		Conductor conductor = dao.findOne(id);
+		Conductor conductor = dao.obtenerConductor(id);
 		dao.closeCurrentSessionwithTransaction();
 		return conductor;
 	}
