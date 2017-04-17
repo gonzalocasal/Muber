@@ -8,7 +8,7 @@ import ar.com.grupo27.service.ConductorService;
 import ar.com.grupo27.service.PasajeroService;
 import ar.com.grupo27.service.ViajeService;
 
-public class App {
+public class Muber {
     
 	public static void main( String[] args ){
         
