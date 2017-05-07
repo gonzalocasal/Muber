@@ -18,7 +18,7 @@ public class ConductorDTO {
 	private List<ViajeDTO> viajes;
 	
 	public ConductorDTO (Conductor conductor){
-		this.id= conductor.getId();
+		this.id = conductor.getId();
 		this.usuario = conductor.getUsuario();
 		this.nombre = conductor.getNombre();
 		this.apellido = conductor.getApellido();

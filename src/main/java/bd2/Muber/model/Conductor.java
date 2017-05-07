@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 public class Conductor extends Usuario{
 	
+	private int id;
 	private Date fechaExipracionLicencia;
 	
 	public Conductor(){
@@ -54,6 +55,14 @@ public class Conductor extends Usuario{
 	
 	public Date getFechaExipracionLicencia() {
 		return fechaExipracionLicencia;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

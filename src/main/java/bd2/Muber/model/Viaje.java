@@ -37,7 +37,7 @@ public class Viaje {
 	}
 
 	public void registrarPasajero(Pasajero pasajero){
-		if (capacidad >= pasajeros.size() +1 && abierto ){
+		if (capacidad >= pasajeros.size() +1 && abierto && !pasajeros.contains(pasajero)){
 			this.pasajeros.add(pasajero);
 		}
 	}
@@ -130,6 +130,20 @@ public class Viaje {
 
 	public Boolean getAbierto() {
 		return abierto;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Viaje other = (Viaje) obj;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 
 	

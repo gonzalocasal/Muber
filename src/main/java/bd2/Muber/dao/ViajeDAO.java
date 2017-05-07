@@ -30,7 +30,6 @@ public class ViajeDAO extends AbstractDAO {
 
 	public void registrarCalificacion(Calificacion calificacion) {
 		currentSession.save(calificacion);
-		
 	}
 	
 }

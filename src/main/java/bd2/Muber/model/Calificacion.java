@@ -8,6 +8,16 @@ public class Calificacion {
 	private Integer puntaje;
 	private String comentario;
 
+	public Calificacion() {
+	}
+	
+	public Calificacion(Viaje viaje, Pasajero pasajero, int puntaje, String comentario) {
+		this.viaje=viaje;
+		this.pasajero=pasajero;
+		this.puntaje=puntaje;
+		this.comentario=comentario;
+	}
+	
 	public Pasajero getPasajero() {
 		return pasajero;
 	}

@@ -6,7 +6,6 @@ import java.util.List;
 
 public abstract class Usuario {
 
-	private int id;
 	protected List<Viaje> viajes;
 	protected String usuario;
 	protected String pass;
@@ -57,14 +56,6 @@ public abstract class Usuario {
 
 	public void setFechaAlta(Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getPass() {

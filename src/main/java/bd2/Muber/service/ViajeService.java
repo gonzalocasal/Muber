@@ -74,9 +74,11 @@ public class ViajeService {
 	}
 
 	public void calificar(Calificacion calificacion) {
-		dao.openCurrentSessionwithTransaction();
-		dao.registrarCalificacion(calificacion);
-		dao.closeCurrentSessionwithTransaction();
+		if (!calificacion.getViaje().getCalificaciones().contains(calificacion)){
+			dao.openCurrentSessionwithTransaction();
+			dao.registrarCalificacion(calificacion);
+			dao.closeCurrentSessionwithTransaction();
+		}
 	}
 
 	
