@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="ar.com.grupo27.model.Pasajero" table="PASAJERO">
+	<class name="bd2.Muber.model.Pasajero" table="PASAJERO">
 		
 		<id name="id" type="int" column="ID_PASAJERO" >
 			<generator class="native"/>
@@ -15,7 +15,7 @@
 
 		<bag name="viajes"  inverse="true" lazy="false" fetch="select"  table="VIAJE_PASAJERO" >
           <key column="ID_PASAJERO" />
-          <many-to-many column="ID_VIAJE" class="ar.com.grupo27.model.Viaje"/>
+          <many-to-many column="ID_VIAJE" class="bd2.Muber.model.Viaje"/>
       	</bag>
 	 
 	</class>

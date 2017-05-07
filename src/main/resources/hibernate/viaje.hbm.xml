@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="ar.com.grupo27.model.Viaje" table="VIAJE">
+	<class name="bd2.Muber.model.Viaje" table="VIAJE">
 		<id name="id" type="int" column="ID_VIAJE" >
 			<generator class="native"/>
 		</id>
@@ -11,18 +11,18 @@
 	 	<property name="capacidad" column="MAX_PASAJEROS" type="int"/>
 	 	<property name="abierto" column="ABIERTO" type="boolean"/>
 	 	
-	 	<many-to-one name="conductor" class="ar.com.grupo27.model.Conductor" fetch="select">
+	 	<many-to-one name="conductor" lazy="false" class="bd2.Muber.model.Conductor" fetch="select">
             <column name="ID_CONDUCTOR" not-null="false" />
         </many-to-one>
 		
 		<bag name="pasajeros" inverse="false" lazy="false" fetch="select" table="VIAJE_PASAJERO">
           <key column="ID_VIAJE" />
-          <many-to-many column="ID_PASAJERO"  class="ar.com.grupo27.model.Pasajero"/>
+          <many-to-many column="ID_PASAJERO"  class="bd2.Muber.model.Pasajero"/>
       	</bag>
       	
       	<bag name="calificaciones" inverse="false" lazy="false" fetch="select" >
           <key column="ID_VIAJE" />
-          <one-to-many class="ar.com.grupo27.model.Calificacion"/>
+          <one-to-many class="bd2.Muber.model.Calificacion"/>
       	</bag>
       	
 	</class>
