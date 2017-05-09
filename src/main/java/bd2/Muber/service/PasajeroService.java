@@ -31,6 +31,13 @@ public class PasajeroService {
 	}
 	
 	
+	public Pasajero cargarCredito(Pasajero pasajero, int monto) {
+		pasajero.cargarCredito(monto);
+		actualizarPasajero(pasajero);
+		return pasajero;
+	}
+	
+	
 	public void registrarPasajero(Pasajero pasajero){
 		dao.openCurrentSessionwithTransaction();
 		dao.persist(pasajero);

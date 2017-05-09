@@ -35,12 +35,14 @@ public class PasajerosController {
 	@RequestMapping(value = "/pasajeros/cargarCredito", method = RequestMethod.PUT, produces = "application/json", headers = "Accept=application/json")
 	public Map<String, Object> cargarCredito(	@RequestParam("pasajeroId") int pasajeroId,
 												@RequestParam("monto") int monto) {
+		
 		Pasajero pasajero = service.obtenerPasajero(pasajeroId);
-		pasajero.cargarCredito(monto);
-		service.actualizarPasajero(pasajero);
+		pasajero = service.cargarCredito(pasajero, monto);
 		Map<String, Object> aMap = new HashMap<String, Object>();
 		aMap.put("result", "OK");
 		aMap.put("credito cargado", new PasajeroDTO(pasajero));
 		return aMap;
 	}
+
+	
 }
