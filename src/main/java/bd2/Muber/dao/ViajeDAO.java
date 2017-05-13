@@ -2,7 +2,6 @@ package bd2.Muber.dao;
 
 import java.util.List;
 
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
 import bd2.Muber.model.Calificacion;
@@ -25,7 +24,7 @@ public class ViajeDAO extends AbstractDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Viaje> obtenerTodosLosViajesAbiertos() {
-		return currentSession.createCriteria(Viaje.class).add(Restrictions.eq("abierto", true)).list(); 
+		return currentSession.createQuery("from Viaje where abierto = true").list();
 	}
 
 	public void registrarCalificacion(Calificacion calificacion) {

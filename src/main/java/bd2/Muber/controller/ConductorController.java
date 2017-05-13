@@ -38,6 +38,14 @@ public class ConductorController {
 		return aMap;
 	}
 	
+	@RequestMapping(value = "/conductores/top10", method = RequestMethod.GET, produces = "application/json", headers = "Accept=application/json")
+	public Map<String, Object> obetenerConductoresTop()  {
+		Map<String, Object> aMap = new HashMap<String, Object>();
+		aMap.put("result", "OK");
+		aMap.put("conductor", service.obternerConductoresTopDTO());
+		return aMap;
+	}
+	
 }
 
 

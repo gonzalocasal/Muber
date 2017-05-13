@@ -3,8 +3,7 @@ package bd2.Muber.model;
 public class Pasajero extends Usuario{
 
 	
-	private int id;
-	private Double saldo;
+	private double saldo;
 
 	public Pasajero(){
 		this.saldo=0.0;
@@ -18,17 +17,11 @@ public class Pasajero extends Usuario{
 		this.saldo += monto;
 	}
 	
-	public Double getSaldo() {
+	public double getSaldo() {
 		return saldo;
 	}
-	public void setSaldo(Double saldo) {
+	public void setSaldo(double saldo) {
 		this.saldo = saldo;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	
 	@Override
@@ -40,7 +33,7 @@ public class Pasajero extends Usuario{
 		if (getClass() != obj.getClass())
 			return false;
 		Pasajero other = (Pasajero) obj;
-		if (id != other.id)
+		if (getId() != other.getId())
 			return false;
 		return true;
 	}

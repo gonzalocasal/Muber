@@ -24,8 +24,7 @@
 		<!-- Incluir mappings aquí -->
 		<mapping resource="hibernate/viaje.hbm.xml" /> 
 		<mapping resource="hibernate/calificacion.hbm.xml" /> 
-		<mapping resource="hibernate/conductor.hbm.xml" />
-		<mapping resource="hibernate/pasajero.hbm.xml" /> 
+		<mapping resource="hibernate/usuario.hbm.xml" /> 
 
 	</session-factory>
 </hibernate-configuration>

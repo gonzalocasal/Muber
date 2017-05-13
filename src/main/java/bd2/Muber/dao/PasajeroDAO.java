@@ -21,7 +21,7 @@ public class PasajeroDAO extends AbstractDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Pasajero> obtenerTodosLosPasajeros() {
-		return currentSession.createCriteria(Pasajero.class).list();
+		return currentSession.createQuery("from Pasajero ").list();
 	}
 	
 }

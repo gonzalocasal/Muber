@@ -11,13 +11,13 @@
 	 	<property name="capacidad" column="MAX_PASAJEROS" type="int"/>
 	 	<property name="abierto" column="ABIERTO" type="boolean"/>
 	 	
-	 	<many-to-one name="conductor" lazy="false" class="bd2.Muber.model.Conductor" fetch="select">
+	 	<many-to-one name="conductor" lazy="false" class="bd2.Muber.model.Usuario" fetch="select">
             <column name="ID_CONDUCTOR" not-null="false" />
         </many-to-one>
 		
 		<bag name="pasajeros" inverse="false" lazy="false" fetch="select" table="VIAJE_PASAJERO">
           <key column="ID_VIAJE" />
-          <many-to-many column="ID_PASAJERO"  class="bd2.Muber.model.Pasajero"/>
+          <many-to-many column="ID_PASAJERO"  class="bd2.Muber.model.Usuario"/>
       	</bag>
       	
       	<bag name="calificaciones" inverse="false" lazy="false" fetch="select" >

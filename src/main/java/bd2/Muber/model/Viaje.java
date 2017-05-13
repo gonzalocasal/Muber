@@ -11,7 +11,7 @@ public class Viaje {
 	private List<Calificacion> calificaciones;
 	private String origen;
 	private String destino;
-	private Double costo;
+	private double costo;
 	private Integer capacidad;
 	private Boolean abierto;
 	
@@ -25,7 +25,7 @@ public class Viaje {
 		this.abierto=true;
 	}
 	
-	public Viaje(String origen, String destino, Conductor conductor, Double costoTotal, int cantidadPasajeros) {
+	public Viaje(String origen, String destino, Conductor conductor, double costoTotal, int cantidadPasajeros) {
 		this.pasajeros = new ArrayList<Pasajero>();
 		this.calificaciones= new ArrayList<Calificacion>();
 		this.origen=origen;
@@ -112,11 +112,11 @@ public class Viaje {
 		this.destino = destino;
 	}
 
-	public Double getCosto() {
+	public double getCosto() {
 		return costo;
 	}
 
-	public void setCosto(Double costo) {
+	public void setCosto(double costo) {
 		this.costo = costo;
 	}
 

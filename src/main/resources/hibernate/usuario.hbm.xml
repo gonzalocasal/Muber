@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class abstract="true" name="bd2.Muber.model.Usuario" >
+
+		<id name="id" type="int" column="ID_USUARIO" >
+			<generator class="hilo"/>
+		</id>
+	 	<property name="usuario" column="USUARIO" type="string"/>
+	 	<property name="pass" column="PASS" type="string"/>
+	 	<property name="nombre" column="NOMBRE" type="string"/>
+	 	<property name="apellido" column="APELLIDO" type="string"/>
+	 	<property name="fechaAlta" column="FECHA_ALTA" type="date"/>
+      	
+      	<union-subclass name="bd2.Muber.model.Conductor" table="CONDUCTOR">
+      		<property name="fechaExipracionLicencia" column="FECHA_EXPIRACION_LICENCIA" type="date"/>
+			<bag name="viajes" lazy="false" fetch="select">
+          		<key column="ID_CONDUCTOR" />
+          		<one-to-many class="bd2.Muber.model.Viaje"/>
+      		</bag>
+		
+		</union-subclass>
+      	
+      	<union-subclass name="bd2.Muber.model.Pasajero" table="PASAJERO">
+			<property name="saldo" column="SALDO" type="double"/>
+			<bag name="viajes"  inverse="true" lazy="false" fetch="select"  table="VIAJE_PASAJERO" >
+		        <key column="ID_PASAJERO" />
+		        <many-to-many column="ID_VIAJE" class="bd2.Muber.model.Viaje"/>
+	    	</bag>
+		</union-subclass>
+      	
+	</class>
+</hibernate-mapping>

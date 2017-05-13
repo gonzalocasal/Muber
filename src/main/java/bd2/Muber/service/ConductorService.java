@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import bd2.Muber.dao.ConductorDAO;
 import bd2.Muber.dto.ConductorDTO;
+import bd2.Muber.dto.TopConductorDTO;
 import bd2.Muber.model.Conductor;
 
 @Component
@@ -32,6 +33,14 @@ public class ConductorService {
 		return dtos;
 	}
 
+	public List<TopConductorDTO> obternerConductoresTopDTO() {
+		dao.openCurrentSessionwithTransaction();
+		List<TopConductorDTO> conductoresTop = dao.obtenerConductoresTop();
+		dao.closeCurrentSessionwithTransaction();
+		return conductoresTop;
+	}
+	
+	
 	public void registrarConductor(Conductor conductor){
 		dao.openCurrentSessionwithTransaction();
 		dao.persist(conductor);
@@ -59,7 +68,7 @@ public class ConductorService {
 		dao.closeCurrentSessionwithTransaction();
 		return todosLosConductores;
 	}
-	
+
 }
 
 

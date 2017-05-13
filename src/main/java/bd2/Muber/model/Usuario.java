@@ -6,6 +6,7 @@ import java.util.List;
 
 public abstract class Usuario {
 
+	protected int id;
 	protected List<Viaje> viajes;
 	protected String usuario;
 	protected String pass;
@@ -64,6 +65,14 @@ public abstract class Usuario {
 
 	public void setPass(String pass) {
 		this.pass = pass;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

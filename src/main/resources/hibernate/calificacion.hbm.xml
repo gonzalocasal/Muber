@@ -8,7 +8,7 @@
 	 	<property name="comentario" column="COMENTARIO" type="string"/>
 	 	<property name="puntaje" column="PUNTAJE" type="int"/>
 	 	
-	 	<many-to-one name="pasajero" lazy="false" class="bd2.Muber.model.Pasajero" fetch="select">
+	 	<many-to-one name="pasajero" lazy="false" class="bd2.Muber.model.Usuario" fetch="select">
             <column name="ID_PASAJERO" not-null="false" />
         </many-to-one>
 		
