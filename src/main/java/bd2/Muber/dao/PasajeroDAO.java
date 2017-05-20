@@ -15,6 +15,11 @@ public class PasajeroDAO extends AbstractDAO {
 		return (Pasajero) currentSession.get(Pasajero.class, id);
 	}
 
+	public Pasajero obtenerPasajero(String usuario){
+		String hql = "from Pasajero p where p.usuario = :usuario"; 
+		return (Pasajero) currentSession.createQuery(hql).setParameter("usuario", usuario).uniqueResult();
+	}
+	
 	public void actualizarPasajero(Pasajero pasajero) {
 		currentSession.update(pasajero);
 	}

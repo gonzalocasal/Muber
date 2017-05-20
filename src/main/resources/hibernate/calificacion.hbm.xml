@@ -9,11 +9,11 @@
 	 	<property name="puntaje" column="PUNTAJE" type="int"/>
 	 	
 	 	<many-to-one name="pasajero" lazy="false" class="bd2.Muber.model.Usuario" fetch="select">
-            <column name="ID_PASAJERO" not-null="false" />
+            <column name="ID_PASAJERO" not-null="false" unique-key="multicolumn_unique_key_name" />
         </many-to-one>
 		
 		<many-to-one name="viaje" lazy="false" class="bd2.Muber.model.Viaje" fetch="select">
-            <column name="ID_VIAJE" not-null="false" />
+            <column name="ID_VIAJE" not-null="false" unique-key="multicolumn_unique_key_name" />
         </many-to-one>
 		
 	</class>

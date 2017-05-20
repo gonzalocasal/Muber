@@ -8,17 +8,17 @@ import bd2.Muber.model.Viaje;
 
 public class ViajeDTO {
 
+	private int id;
 	private String origen;
 	private String destino;
 	private String conductor;
-	private Double costo;
-	private Integer capacidad;
+	private double costo;
+	private int capacidad;
 	private Boolean abierto;
 	private List<CalificacionDTO> calificaciones;
 	
-	
 	public ViajeDTO(Viaje viaje) {
-		
+		this.id = viaje.getId();
 		this.origen = viaje.getOrigen();
 		this.destino = viaje.getDestino();
 		this.conductor = viaje.getConductor().getUsuario();
@@ -29,7 +29,6 @@ public class ViajeDTO {
 		for (Calificacion calificacion : viaje.getCalificaciones()){
 			this.calificaciones.add(new CalificacionDTO(calificacion));
 		}
-		
 	}
 	
 	public List<CalificacionDTO> getCalificaciones() {
@@ -50,16 +49,16 @@ public class ViajeDTO {
 	public void setDestino(String destino) {
 		this.destino = destino;
 	}
-	public Double getCosto() {
+	public double getCosto() {
 		return costo;
 	}
-	public void setCosto(Double costo) {
+	public void setCosto(double costo) {
 		this.costo = costo;
 	}
-	public Integer getCapacidad() {
+	public int getCapacidad() {
 		return capacidad;
 	}
-	public void setCapacidad(Integer capacidad) {
+	public void setCapacidad(int capacidad) {
 		this.capacidad = capacidad;
 	}
 	public Boolean getAbierto() {
@@ -73,5 +72,11 @@ public class ViajeDTO {
 	}
 	public void setConductor(String conductor) {
 		this.conductor = conductor;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 }

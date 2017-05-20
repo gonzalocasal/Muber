@@ -57,6 +57,14 @@ public class PasajeroService {
 		return pasajero;
 	}
 	
+	
+	public Pasajero obtenerPasajero(String usuario){
+		dao.openCurrentSessionwithTransaction();
+		Pasajero pasajero = dao.obtenerPasajero(usuario);
+		dao.closeCurrentSessionwithTransaction();
+		return pasajero;
+	}
+	
 	public List<Pasajero> obtenerTodosLosPasajeros(){
 		dao.openCurrentSessionwithTransaction();
 		List<Pasajero> todosLosPasajeros = dao.obtenerTodosLosPasajeros();

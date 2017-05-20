@@ -6,7 +6,7 @@
 		<id name="id" type="int" column="ID_USUARIO" >
 			<generator class="hilo"/>
 		</id>
-	 	<property name="usuario" column="USUARIO" type="string"/>
+	 	<property name="usuario" unique="true" column="USUARIO" type="string"/>
 	 	<property name="pass" column="PASS" type="string"/>
 	 	<property name="nombre" column="NOMBRE" type="string"/>
 	 	<property name="apellido" column="APELLIDO" type="string"/>

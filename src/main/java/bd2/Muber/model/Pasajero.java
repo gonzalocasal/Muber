@@ -2,12 +2,21 @@ package bd2.Muber.model;
 
 public class Pasajero extends Usuario{
 
-	
 	private double saldo;
 
 	public Pasajero(){
+		super();
 		this.saldo=0.0;
 	}
+
+	public Pasajero( String nombre, String apellido, String usuario, double saldo){
+		this.nombre=nombre;
+		this.apellido=apellido;
+		this.usuario=usuario;
+		this.pass="default";
+		this.saldo=saldo;
+	}
+	
 	
 	public void cobrar (Viaje viaje){
 		this.saldo -= viaje.getCosto()/viaje.getPasajeros().size();

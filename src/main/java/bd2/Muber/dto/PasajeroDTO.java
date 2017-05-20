@@ -14,7 +14,7 @@ public class PasajeroDTO {
 	private String nombre;
 	private String apellido;
 	private Date fechaAlta;
-	private Double saldo;
+	private double saldo;
 	private List<ViajeDTO> viajes;
 	
 	public PasajeroDTO (Pasajero pasajero){
@@ -67,10 +67,10 @@ public class PasajeroDTO {
 	public void setFechaAlta(Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
-	public Double getSaldo() {
+	public double getSaldo() {
 		return saldo;
 	}
-	public void setSaldo(Double saldo) {
+	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
 	
