@@ -17,6 +17,14 @@ public class Conductor extends Usuario{
 		this.fechaExipracionLicencia = calendar.getTime();
 	}
 	
+	public void finalizarViaje (Viaje viaje){
+		viaje.finalizarViaje();
+		for(Pasajero pasajero : viaje.getPasajeros()){
+			pasajero.cobrar(viaje);
+		}
+	}
+	
+	
 	public Double promedioPuntajes(){
 		List<Viaje> viajesCerrados = this.viajes.stream().filter(viaje -> !viaje.getAbierto()).collect(Collectors.toList());
 		return (viajesCerrados.stream().mapToDouble(v -> v.promedioPuntajes()).average()).getAsDouble();

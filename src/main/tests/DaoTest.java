@@ -53,7 +53,8 @@ public class DaoTest {
 	    
 	    Assert.assertEquals(2, viajeService.obtenerViaje(1).getPasajeros().size());
 	    
-	    viajeService.finalizarViaje(viaje);
+	    ConductorService conductorService = new ConductorService();
+	    conductorService.finalizarViaje(viaje);
 	    Assert.assertFalse(viajeService.obtenerViaje(1).getAbierto());
 	    Assert.assertEquals(0,viajeService.obtenerTodosLosViajesAbiertos().size()); 
 	    

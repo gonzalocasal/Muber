@@ -23,7 +23,7 @@
       	
       	<union-subclass name="bd2.Muber.model.Pasajero" table="PASAJERO">
 			<property name="saldo" column="SALDO" type="double"/>
-			<bag name="viajes"  inverse="true" lazy="false" fetch="select"  table="VIAJE_PASAJERO" >
+			<bag name="viajes"  lazy="false" fetch="select"  table="VIAJE_PASAJERO" >
 		        <key column="ID_PASAJERO" />
 		        <many-to-many column="ID_VIAJE" class="bd2.Muber.model.Viaje"/>
 	    	</bag>

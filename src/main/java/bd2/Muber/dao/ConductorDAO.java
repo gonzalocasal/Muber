@@ -22,6 +22,11 @@ public class ConductorDAO extends AbstractDAO {
 		return (Conductor) currentSession.get(Conductor.class, id);
 	}
 
+	public Conductor obtenerConductor(String usuario){
+		String hql = "from Conductor c where c.usuario = :usuario"; 
+		return (Conductor) currentSession.createQuery(hql).setParameter("usuario", usuario).uniqueResult();
+	}
+	
 	public void actualizarConductor(Conductor conductor) {
 		currentSession.update(conductor);
 	}

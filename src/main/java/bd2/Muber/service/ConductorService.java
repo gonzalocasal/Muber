@@ -10,6 +10,8 @@ import bd2.Muber.dao.ConductorDAO;
 import bd2.Muber.dto.ConductorDTO;
 import bd2.Muber.dto.TopConductorDTO;
 import bd2.Muber.model.Conductor;
+import bd2.Muber.model.Viaje;
+
 
 @Component
 public class ConductorService {
@@ -17,13 +19,20 @@ public class ConductorService {
 	@Autowired
 	private ConductorDAO dao;
 
+	@Autowired
+	private ViajeService viajeService;
+	
+	
 	public ConductorService(){
 		this.dao=new ConductorDAO();
+		this.viajeService = new ViajeService();
 	}
 	
 	public ConductorDTO obternerConductorDTO (int id){
 		return new ConductorDTO(obternerConductor(id));
 	}
+	
+	
 	
 	public Object obtenerTodosLosCondutoresDTO() {
 		List<Conductor> conductores = obtenerTodosLosCondutores();
@@ -61,6 +70,23 @@ public class ConductorService {
 		return conductor;
 	}
 	
+
+	public Conductor obternerConductor (String usuario){
+		dao.openCurrentSessionwithTransaction();
+		Conductor conductor = dao.obtenerConductor(usuario);
+		dao.closeCurrentSessionwithTransaction();
+		return conductor;
+	}
+	
+	public Boolean finalizarViaje(Viaje viaje) {
+		
+		if(viaje.getAbierto()){
+			viaje.getConductor().finalizarViaje(viaje);
+			viajeService.actualizarViaje(viaje);
+			return true;
+		}
+		return false;
+	}
 	
 	public List<Conductor> obtenerTodosLosCondutores(){
 		dao.openCurrentSessionwithTransaction();

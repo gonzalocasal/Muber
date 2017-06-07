@@ -5,12 +5,13 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import bd2.Muber.dto.CargaCreditoDTO;
 import bd2.Muber.dto.PasajeroDTO;
 import bd2.Muber.model.Pasajero;
 import bd2.Muber.service.PasajeroService;
@@ -34,26 +35,20 @@ public class PasajerosController {
 	
 	
 	@RequestMapping(value = "/pasajeros/nuevo", method = RequestMethod.POST, produces = "application/json", headers = "Accept=application/json")
-	public Map<String, Object> nuevoPasajero(	@RequestParam("nombre") String nombre,
-												@RequestParam("apellido") String apellido,
-												@RequestParam("usuario") String usuario,
-												@RequestParam("saldo") int saldo) {
+	public Map<String, Object> nuevoPasajero(	@RequestBody Pasajero paramPasajero) {
 		
 		
-		Pasajero pasajero = new Pasajero(nombre,apellido,usuario,saldo);
-		service.registrarPasajero(pasajero);
+		service.registrarPasajero(paramPasajero);
 		Map<String, Object> aMap = new HashMap<String, Object>();
 		aMap.put("result", "OK");
-		aMap.put("credito cargado", new PasajeroDTO(service.obtenerPasajero(usuario)));
+		aMap.put("credito cargado", new PasajeroDTO(service.obtenerPasajero(paramPasajero.getUsuario())));
 		return aMap;
 	}
 	
 	@RequestMapping(value = "/pasajeros/cargarCredito", method = RequestMethod.PUT, produces = "application/json", headers = "Accept=application/json")
-	public Map<String, Object> cargarCredito(	@RequestParam("pasajeroId") int pasajeroId,
-												@RequestParam("monto") int monto) {
-		
-		Pasajero pasajero = service.obtenerPasajero(pasajeroId);
-		pasajero = service.cargarCredito(pasajero, monto);
+	public Map<String, Object> cargarCredito(	@RequestBody CargaCreditoDTO carga) {
+		Pasajero pasajero = service.obtenerPasajero(carga.getIdUsuario());
+		pasajero = service.cargarCredito(pasajero, carga.getCredito());
 		Map<String, Object> aMap = new HashMap<String, Object>();
 		aMap.put("result", "OK");
 		aMap.put("credito cargado", new PasajeroDTO(pasajero));

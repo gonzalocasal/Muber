@@ -5,12 +5,13 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import bd2.Muber.dto.AgregarPasajeroDTO;
 import bd2.Muber.dto.CalificacionDTO;
 import bd2.Muber.dto.PasajeroDTO;
 import bd2.Muber.dto.ViajeDTO;
@@ -46,13 +47,9 @@ public class ViajeController {
 	}
 	
 	@RequestMapping(value = "/viajes/nuevo", method = RequestMethod.POST, produces = "application/json", headers = "Accept=application/json")
-	public Map<String, Object> nuevoViaje( @RequestParam("origen") String origen,
-											 @RequestParam("destino") String destino,
-											 @RequestParam("conductorId") int conductorId,
-											 @RequestParam("costoTotal") Double costoTotal, 
-											 @RequestParam("cantidadPasajeros") int cantidadPasajeros) {
-		Conductor conductor = conductorService.obternerConductor(conductorId);
-		Viaje nuevoViaje = new Viaje (origen,destino,conductor,costoTotal,cantidadPasajeros);
+	public Map<String, Object> nuevoViaje(@RequestBody  ViajeDTO viajeDTO ) {
+		Conductor conductor = conductorService.obternerConductor(viajeDTO.getConductor());
+		Viaje nuevoViaje = new Viaje (viajeDTO.getOrigen(),viajeDTO.getDestino(),conductor,viajeDTO.getCosto(),viajeDTO.getCapacidad());
 		service.registrarViaje(nuevoViaje);
 		Map<String, Object> aMap = new HashMap<String, Object>();
 		aMap.put("result", "OK");
@@ -61,25 +58,21 @@ public class ViajeController {
 	}
 	
 	@RequestMapping(value = "/viajes/agregarPasajero", method = RequestMethod.PUT, produces = "application/json", headers = "Accept=application/json")
-	public Map<String, Object> agregarPasajero( 	@RequestParam("viajeId") int viajeId,
-													@RequestParam("pasajeroId") int pasajeroId) {
-		Viaje viaje = service.obtenerViaje(viajeId);
-		Pasajero pasajero = pasajeroService.obtenerPasajero(pasajeroId);
+	public Map<String, Object> agregarPasajero(@RequestBody AgregarPasajeroDTO pasajeroViajeDTO 	) {
+		Viaje viaje = service.obtenerViaje(pasajeroViajeDTO.getViajeId());
+		Pasajero pasajero = pasajeroService.obtenerPasajero(pasajeroViajeDTO.getPasajeroId());
 		service.registrarPasajero(viaje, pasajero);
 		Map<String, Object> aMap = new HashMap<String, Object>();
 		aMap.put("result", "OK");
-		aMap.put("Pasajero Agregado", new PasajeroDTO(pasajeroService.obtenerPasajero(pasajeroId)));
+		aMap.put("Pasajero Agregado", new PasajeroDTO(pasajero));
 		return aMap;
 	}
 	
 	@RequestMapping(value = "/viajes/calificar", method = RequestMethod.POST, produces = "application/json", headers = "Accept=application/json")
-	public Map<String, Object> calificar( 	@RequestParam("viajeId") int viajeId,
-											@RequestParam("pasajeroId") int pasajeroId,
-											@RequestParam("puntaje") int puntaje,
-											@RequestParam("comentario") String comentario){
-		Viaje viaje = service.obtenerViaje(viajeId);
-		Pasajero pasajero = pasajeroService.obtenerPasajero(pasajeroId);
-		Calificacion calificacion = new Calificacion(viaje, pasajero, puntaje, comentario);
+	public Map<String, Object> calificar( 	@RequestBody CalificacionDTO paramCalificacion){
+		Viaje viaje = service.obtenerViaje(paramCalificacion.getViajeID());
+		Pasajero pasajero = pasajeroService.obtenerPasajero(paramCalificacion.getPasajero());
+		Calificacion calificacion = new Calificacion(viaje, pasajero, paramCalificacion.getPuntaje(), paramCalificacion.getComentario());
 		service.calificar(calificacion);
 		Map<String, Object> aMap = new HashMap<String, Object>();
 		aMap.put("result", "OK");
@@ -88,13 +81,12 @@ public class ViajeController {
 	}
 	
 	@RequestMapping(value = "/viajes/finalizar", method = RequestMethod.PUT , produces = "application/json", headers = "Accept=application/json")
-	public Map<String, Object> finalizar( 	@RequestParam("viajeId") int viajeId){
+	public Map<String, Object> finalizar( 	@RequestBody Integer viajeId){
 		Viaje viaje = service.obtenerViaje(viajeId);
-		service.finalizarViaje(viaje);
+		String result = (conductorService.finalizarViaje(viaje)) ? "OK" : "Error, el viaje fue cerrado previamente";
 		Map<String, Object> aMap = new HashMap<String, Object>();
-		String result = (viaje.getAbierto()) ? "OK" : "Error, el viaje fue cerrado previamente";
 		aMap.put("result", result);
-		aMap.put("Viaje Finalizado", new ViajeDTO(service.obtenerViaje(viajeId)));
+		aMap.put("Viaje Finalizado", new ViajeDTO(viaje));
 		return aMap;
 	}
 	

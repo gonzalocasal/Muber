@@ -15,15 +15,12 @@ import bd2.Muber.model.Viaje;
 @Component
 public class ViajeService {
 
-	@Autowired
-	private PasajeroService pasajeroService;
 	
 	@Autowired
 	private ViajeDAO dao;
 	
 	public ViajeService(){
 		this.dao = new ViajeDAO();
-		this.pasajeroService = new PasajeroService();
 	}
 	
 	public List<ViajeDTO> obtenerTodosLosViajesAbiertosDTO() {
@@ -63,14 +60,6 @@ public class ViajeService {
 	public void registrarPasajero(Viaje viajeParam, Pasajero pasajero) {
 		viajeParam.registrarPasajero(pasajero);
 		actualizarViaje(viajeParam);
-	}
-
-	public void finalizarViaje(Viaje viajerParam) {
-		Viaje viaje = obtenerViaje(viajerParam.getId());
-		if(viaje.finalizarViaje()){
-			pasajeroService.cobrarViaje(viaje);
-			actualizarViaje(viaje);
-		}
 	}
 
 	public void calificar(Calificacion calificacion) {

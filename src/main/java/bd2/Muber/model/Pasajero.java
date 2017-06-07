@@ -1,5 +1,6 @@
 package bd2.Muber.model;
 
+
 public class Pasajero extends Usuario{
 
 	private double saldo;

@@ -59,12 +59,7 @@ public class App {
         pasajero3.setSaldo(1500.00);
         pasajeroService.registrarPasajero(pasajero3);
         
-        viajeService.registrarPasajero(viaje,pasajero1);
-        viajeService.registrarPasajero(viaje,pasajero2);
-        viajeService.registrarPasajero(viaje,pasajero3);
         
-        viajeService.finalizarViaje(viaje);
-
         Calificacion calificacion1= new Calificacion();
         calificacion1.setPuntaje(5);
         calificacion1.setComentario("muy bueno");
@@ -83,9 +78,6 @@ public class App {
         calificacion3.setViaje(viaje);
         calificacion3.setPasajero(pasajero3);
         
-        viajeService.calificar(calificacion1);
-        viajeService.calificar(calificacion2);
-        viajeService.calificar(calificacion3);
         
         Conductor resultado = conductorService.obternerConductor(1);
 		System.out.print("El promedio del conductor "+ resultado.getNombre()+" "+resultado.getApellido() +" es: " + resultado.promedioPuntajes().doubleValue());

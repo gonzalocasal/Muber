@@ -5,7 +5,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/tests"/>
-        <property name="context-root" value="MuberRESTful"/>
         <property name="java-output-path" value="/MuberRESTful/target/classes"/>
+        <property name="context-root" value="muber"/>
     </wb-module>
 </project-modules>

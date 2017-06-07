@@ -15,7 +15,7 @@
             <column name="ID_CONDUCTOR" not-null="false" />
         </many-to-one>
 		
-		<bag name="pasajeros" inverse="false" lazy="false" fetch="select" table="VIAJE_PASAJERO">
+		<bag name="pasajeros" cascade="all" lazy="false" fetch="select" table="VIAJE_PASAJERO">
           <key column="ID_VIAJE" />
           <many-to-many column="ID_PASAJERO"  class="bd2.Muber.model.Usuario"/>
       	</bag>
