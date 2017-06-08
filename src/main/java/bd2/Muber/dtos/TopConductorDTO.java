@@ -1,4 +1,4 @@
-package bd2.Muber.dto;
+package bd2.Muber.dtos;
 
 public class TopConductorDTO {
 

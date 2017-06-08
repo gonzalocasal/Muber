@@ -4,7 +4,7 @@
 	<class abstract="true" name="bd2.Muber.model.Usuario" >
 
 		<id name="id" type="int" column="ID_USUARIO" >
-			<generator class="hilo"/>
+			<generator class="increment"/>
 		</id>
 	 	<property name="usuario" unique="true" column="USUARIO" type="string"/>
 	 	<property name="pass" column="PASS" type="string"/>

@@ -1,9 +1,10 @@
-package bd2.Muber.controller;
+package bd2.Muber.controllers;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,17 +12,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import bd2.Muber.dto.AgregarPasajeroDTO;
-import bd2.Muber.dto.CalificacionDTO;
-import bd2.Muber.dto.PasajeroDTO;
-import bd2.Muber.dto.ViajeDTO;
+import bd2.Muber.dtos.AgregarPasajeroDTO;
+import bd2.Muber.dtos.CalificacionDTO;
+import bd2.Muber.dtos.PasajeroDTO;
+import bd2.Muber.dtos.ViajeDTO;
 import bd2.Muber.model.Calificacion;
 import bd2.Muber.model.Conductor;
 import bd2.Muber.model.Pasajero;
 import bd2.Muber.model.Viaje;
-import bd2.Muber.service.ConductorService;
-import bd2.Muber.service.PasajeroService;
-import bd2.Muber.service.ViajeService;
+import bd2.Muber.services.ConductorService;
+import bd2.Muber.services.PasajeroService;
+import bd2.Muber.services.ViajeService;
 
 @ControllerAdvice
 @RequestMapping("/services")
@@ -30,12 +31,15 @@ import bd2.Muber.service.ViajeService;
 public class ViajeController {
 
 	@Autowired
+	@Qualifier("ConductorServiceTransactional")
 	private ConductorService conductorService;
 	
 	@Autowired
+	@Qualifier("PasajeroServiceTransactional")
 	private PasajeroService pasajeroService;
 	
 	@Autowired
+	@Qualifier("ViajeServiceTransactional")
 	private ViajeService service;
 	
 	@RequestMapping(value = "/viajes/abiertos", method = RequestMethod.GET, produces = "application/json", headers = "Accept=application/json")
@@ -91,5 +95,3 @@ public class ViajeController {
 	}
 	
 }
-
-
