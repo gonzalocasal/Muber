@@ -85,12 +85,11 @@ public class ViajeController {
 	}
 	
 	@RequestMapping(value = "/viajes/finalizar", method = RequestMethod.PUT , produces = "application/json", headers = "Accept=application/json")
-	public Map<String, Object> finalizar( 	@RequestBody Integer viajeId){
-		Viaje viaje = service.obtenerViaje(viajeId);
-		String result = (conductorService.finalizarViaje(viaje)) ? "OK" : "Error, el viaje fue cerrado previamente";
+	public Map<String, Object> finalizar( 	@RequestBody ViajeDTO viajeDTO){
+		String result = (conductorService.finalizarViaje(viajeDTO.getId())) ? "OK" : "Error, el viaje fue cerrado previamente";
 		Map<String, Object> aMap = new HashMap<String, Object>();
 		aMap.put("result", result);
-		aMap.put("Viaje Finalizado", new ViajeDTO(viaje));
+		aMap.put("Viaje Finalizado", "OK");
 		return aMap;
 	}
 	

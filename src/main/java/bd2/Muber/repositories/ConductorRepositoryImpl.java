@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import bd2.Muber.dtos.TopConductorDTO;
 import bd2.Muber.model.Conductor;
 
-@Component
 public class ConductorRepositoryImpl extends AbstractRepository implements IConductorRepository {
 
 	private static final int CONDUCTORES_TOP_SIZE = 10;

@@ -40,7 +40,7 @@ public class PasajerosController {
 		service.registrarPasajero(paramPasajero);
 		Map<String, Object> aMap = new HashMap<String, Object>();
 		aMap.put("result", "OK");
-		aMap.put("credito cargado", new PasajeroDTO(service.obtenerPasajero(paramPasajero.getUsuario())));
+		aMap.put("pasajero creado", new PasajeroDTO(service.obtenerPasajero(paramPasajero.getUsuario())));
 		return aMap;
 	}
 	

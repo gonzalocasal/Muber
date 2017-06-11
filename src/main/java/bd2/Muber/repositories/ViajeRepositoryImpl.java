@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import bd2.Muber.model.Calificacion;
 import bd2.Muber.model.Viaje;
 
-@Component
+
 public class ViajeRepositoryImpl extends AbstractRepository implements IViajeRepository {
 
 	public void guardar (Viaje viaje) {

@@ -17,7 +17,7 @@ public class ConductorService {
 	
 	public ConductorService(){
 		this.repo=new ConductorRepositoryImpl();
-		this.viajeService = new ViajeService();
+		this.setViajeService(new ViajeService());
 	}
 	
 	public void registrarConductor(Conductor conductor){
@@ -56,10 +56,11 @@ public class ConductorService {
 		return repo.obtenerConductoresTop();
 	}
 	
-	public Boolean finalizarViaje(Viaje viaje) {
+	public Boolean finalizarViaje(int id) {
+		Viaje viaje = getViajeService().obtenerViaje(id);
 		if(viaje.getAbierto()){
 			viaje.getConductor().finalizarViaje(viaje);
-			viajeService.actualizarViaje(viaje);
+			getViajeService().actualizarViaje(viaje);
 			return true;
 		}
 		return false;
@@ -71,6 +72,14 @@ public class ConductorService {
 	
 	public void setRepo(ConductorRepositoryImpl repo) {
 		this.repo = repo;
+	}
+
+	public ViajeService getViajeService() {
+		return viajeService;
+	}
+
+	public void setViajeService(ViajeService viajeService) {
+		this.viajeService = viajeService;
 	}
 
 }
