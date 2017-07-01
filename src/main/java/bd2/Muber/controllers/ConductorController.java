@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import bd2.Muber.model.Conductor;
 import bd2.Muber.services.ConductorService;
 
 @ControllerAdvice
@@ -45,6 +47,15 @@ public class ConductorController {
 		Map<String, Object> aMap = new HashMap<String, Object>();
 		aMap.put("result", "OK");
 		aMap.put("conductor", service.obternerConductoresTopDTO());
+		return aMap;
+	}
+	
+	@RequestMapping(value = "/conductores/nuevo", method = RequestMethod.POST, produces = "application/json", headers = "Accept=application/json")
+	public Map<String, Object> nuevoConductor(	@RequestBody Conductor paramConductor) {
+		service.registrarConductor(paramConductor);
+		Map<String, Object> aMap = new HashMap<String, Object>();
+		aMap.put("result", "OK");
+		aMap.put("pasajero creado", service.obternerConductor(paramConductor.getUsuario()));
 		return aMap;
 	}
 	

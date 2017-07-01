@@ -11,7 +11,7 @@ public class ViajeDTO {
 	private int id;
 	private String origen;
 	private String destino;
-	private String conductor;
+	private int conductorid;
 	private double costo;
 	private int capacidad;
 	private Boolean abierto;
@@ -21,7 +21,7 @@ public class ViajeDTO {
 		this.id = viaje.getId();
 		this.origen = viaje.getOrigen();
 		this.destino = viaje.getDestino();
-		this.conductor = viaje.getConductor().getUsuario();
+		this.conductorid = viaje.getConductor().getId();
 		this.costo = viaje.getCosto();
 		this.capacidad = viaje.getCapacidad();
 		this.abierto = viaje.getAbierto();
@@ -67,11 +67,11 @@ public class ViajeDTO {
 	public void setAbierto(Boolean abierto) {
 		this.abierto = abierto;
 	}
-	public String getConductor() {
-		return conductor;
+	public int getConductor() {
+		return conductorid;
 	}
-	public void setConductor(String conductor) {
-		this.conductor = conductor;
+	public void setConductor(int conductor) {
+		this.conductorid = conductor;
 	}
 	public int getId() {
 		return id;
