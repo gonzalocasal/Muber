@@ -4,23 +4,23 @@ import bd2.Muber.model.Calificacion;
 
 public class CalificacionDTO {
 
-	private String pasajero;
+	private int pasajeroId;
 	private Integer puntaje;
 	private String comentario;
-	private Integer viajeID;
+	private int viajeId;
 	
 	public CalificacionDTO(Calificacion calificacion) {
-		this.pasajero = calificacion.getPasajero().getUsuario();
+		this.pasajeroId = calificacion.getPasajero().getId();
 		this.puntaje = calificacion.getPuntaje();
 		this.comentario = calificacion.getComentario();
-		this.viajeID = calificacion.getViaje().getId();
+		this.viajeId = calificacion.getViaje().getId();
 	}
-	
-	public String getPasajero() {
-		return pasajero;
+
+	public int getPasajero() {
+		return pasajeroId;
 	}
-	public void setPasajero(String pasajero) {
-		this.pasajero = pasajero;
+	public void setPasajero(int pasajero) {
+		this.pasajeroId = pasajero;
 	}
 	public Integer getPuntaje() {
 		return puntaje;
@@ -35,9 +35,9 @@ public class CalificacionDTO {
 		this.comentario = comentario;
 	}
 	public Integer getViajeID() {
-		return viajeID;
+		return viajeId;
 	}
 	public void setViajeID(Integer viajeID) {
-		this.viajeID = viajeID;
+		this.viajeId = viajeID;
 	}
 }

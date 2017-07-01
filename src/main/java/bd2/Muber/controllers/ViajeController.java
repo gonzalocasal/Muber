@@ -77,7 +77,7 @@ public class ViajeController {
 		Viaje viaje = service.obtenerViaje(paramCalificacion.getViajeID());
 		Pasajero pasajero = pasajeroService.obtenerPasajero(paramCalificacion.getPasajero());
 		Calificacion calificacion = new Calificacion(viaje, pasajero, paramCalificacion.getPuntaje(), paramCalificacion.getComentario());
-		service.calificar(calificacion);
+		service.calificar(calificacion,pasajero,viaje);
 		Map<String, Object> aMap = new HashMap<String, Object>();
 		aMap.put("result", "OK");
 		aMap.put("Calificación Agregada", new CalificacionDTO(calificacion));

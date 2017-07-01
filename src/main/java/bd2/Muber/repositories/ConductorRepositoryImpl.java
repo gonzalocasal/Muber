@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
-import org.springframework.stereotype.Component;
 
 import bd2.Muber.dtos.TopConductorDTO;
 import bd2.Muber.model.Conductor;

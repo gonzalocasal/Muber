@@ -2,8 +2,6 @@ package bd2.Muber.repositories;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
 import bd2.Muber.model.Calificacion;
 import bd2.Muber.model.Viaje;
 

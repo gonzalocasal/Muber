@@ -58,4 +58,36 @@ public class Calificacion {
 		this.viaje = viaje;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((pasajero == null) ? 0 : pasajero.hashCode());
+		result = prime * result + ((viaje == null) ? 0 : viaje.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Calificacion other = (Calificacion) obj;
+		if (pasajero == null) {
+			if (other.pasajero != null)
+				return false;
+		} else if (!pasajero.equals(other.pasajero))
+			return false;
+		if (viaje == null) {
+			if (other.viaje != null)
+				return false;
+		} else if (!viaje.equals(other.viaje))
+			return false;
+		return true;
+	}
+
+	
 }

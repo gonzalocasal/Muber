@@ -42,14 +42,27 @@ public class ViajeService {
 	}
 	
 	public void registrarPasajero(Viaje viajeParam, Pasajero pasajero) {
+		if (viajeParam.getPasajeros().contains(pasajero)) {
+			throw new RuntimeException("El Pasajero ya fue registrado previamente");
+		}
 		viajeParam.registrarPasajero(pasajero);
 		actualizarViaje(viajeParam);
 	}
 
-	public void calificar(Calificacion calificacion) {
-		if (!calificacion.getViaje().getCalificaciones().contains(calificacion)){
+	public void calificar(Calificacion calificacion, Pasajero pasajero, Viaje viaje) {
+		if (validarCalificacion(calificacion, pasajero, viaje)){
 			repo.registrarCalificacion(calificacion);
 		}
+	}
+
+	private boolean validarCalificacion(Calificacion calificacion, Pasajero pasajero, Viaje viaje) {
+		if(calificacion.getViaje().getCalificaciones().contains(calificacion)) {
+			throw new RuntimeException(String.format("Ya Existe una califacion del pasajero %1s para el viaje %2s",pasajero.getId(),viaje.getId())); 
+		}
+		if(!viaje.getPasajeros().contains(pasajero)) {
+			throw new RuntimeException(String.format("El pasajero %1s no se encuentra registrado en el viaje %2s",pasajero.getId(),viaje.getId())); 
+		}
+		return true; 
 	}
 	
 	public ViajeRepositoryImpl getRepo() {
