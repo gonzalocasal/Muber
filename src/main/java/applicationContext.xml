@@ -1,0 +1,114 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx-3.1.xsd 
+       http://www.springframework.org/schema/jdbc 
+       http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<import resource="classpath:dataSource.xml" />
+    <import resource="classpath:hibernate.cfg.xml" />
+     
+	<bean id="contextApplicationContextProvider"
+		class="bd2.Muber.util.Bd2ContextProvider">
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- ==================PASAJERO================== !-->
+	<bean id="PasajeroServiceTransactional" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="PasajerosService" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="PasajerosService" class="bd2.Muber.services.PasajeroService">
+		<property name="repo">
+			<ref bean="PasajeroRepository" />
+		</property>
+	</bean>
+
+	<bean id="PasajeroRepository"	class="bd2.Muber.repositories.PasajeroRepositoryImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<!-- ==================CONDUCTOR================== !-->
+	<bean id="ConductorServiceTransactional" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="ConductorService" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="ConductorService" class="bd2.Muber.services.ConductorService">
+		<property name="repo">
+			<ref bean="ConductorRepository" />
+		</property>
+		<property name="viajeService">
+			<ref bean="ViajeServiceTransactional" />
+		</property>
+	</bean>
+
+	<bean id="ConductorRepository"	class="bd2.Muber.repositories.ConductorRepositoryImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- ==================VIAJE================== !-->
+	<bean id="ViajeServiceTransactional" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="target">
+			<ref bean="ViajeService" />
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="ViajeService" class="bd2.Muber.services.ViajeService">
+		<property name="repo">
+			<ref bean="ViajeRepository" />
+		</property>
+	</bean>
+
+	<bean id="ViajeRepository"	class="bd2.Muber.repositories.ViajeRepositoryImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	
+</beans>
+   
+
+	
